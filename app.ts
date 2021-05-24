@@ -1,16 +1,34 @@
-function add(n1: number, n2: number, print: boolean, phrase: string) {
-  const result = n1 + n2;
-  if (print) {
-    console.log(phrase, result);
+// // We can disable this notation and let Typescript assign the types for us with Type Inference
+// const person: {
+//   name: string;
+//   age: number;
+// } = {
+const person = {
+  name: 'Ivan',
+  age: 30
+};
+
+console.log(person.name);
+
+// Using Type Assignment
+// const product: {
+//   id: string;
+//   price: number;
+//   tags: string[],
+//   details: {
+//     title: string;
+//     description: string;
+//   }
+// } = {
+// Using Type Inference
+const product = {
+  id: 'abc1',
+  price: 12.99,
+  tags: ['great-offer', 'hot-and-new'],
+  details: {
+    title: 'Red Carpet',
+    description: 'A great carpet - almost brand-new!'
   }
+};
 
-  return result;
-}
-
-const number1 = '5';
-const number2 = '2.8';
-const printResult = true;
-const resultPhrase = 'Result is: ';
-
-// + in this case converts the variables on numbers
-add(+number1, +number2, printResult, resultPhrase);
+console.log(product.details.title);
