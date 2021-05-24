@@ -1,34 +1,12 @@
-// // We can disable this notation and let Typescript assign the types for us with Type Inference
-// const person: {
-//   name: string;
-//   age: number;
-// } = {
-const person = {
+const person2 = {
   name: 'Ivan',
-  age: 30
+  age: 30,
+  hobbies: ['Sports', 'Cooking']
 };
 
-console.log(person.name);
+let favoriteActivities: string[];
+favoriteActivities = ['Sports', 'Cooking'];
 
-// Using Type Assignment
-// const product: {
-//   id: string;
-//   price: number;
-//   tags: string[],
-//   details: {
-//     title: string;
-//     description: string;
-//   }
-// } = {
-// Using Type Inference
-const product = {
-  id: 'abc1',
-  price: 12.99,
-  tags: ['great-offer', 'hot-and-new'],
-  details: {
-    title: 'Red Carpet',
-    description: 'A great carpet - almost brand-new!'
-  }
-};
-
-console.log(product.details.title);
+for (const hobby of person2.hobbies) {
+  console.log(hobby.toUpperCase());
+}
