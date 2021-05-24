@@ -1,23 +1,11 @@
-type combinable = number | string;
-type resultableType = 'as-number' | 'as-text';
-
-function combine(input1: combinable, input2: combinable, resultType: resultableType) {
-  let result;
-  
-  if (resultType === 'as-number') {
-    result = +input1 + +input2;
-  } else {
-    result = input1.toString() + input2.toString();
-  }
-
+// You can set the return types, but in most of the cases Type Inference works well.
+function add(n1: number, n2: number): number {
+  const result = n1 + n2;
   return result;
 }
 
-const combinedAges = combine(30, 26, 'as-number');
-console.log(combinedAges);
+function printResult(result: number): void {
+  console.log('Result: ' + result);
+}
 
-const combinedStringAges = combine('30', '26', 'as-number');
-console.log(combinedAges);
-
-const combinedName = combine('Ivan', 'Rosana', 'as-text');
-console.log(combinedName);
+printResult(add(5, 12));
