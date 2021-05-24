@@ -67,5 +67,13 @@
     /* Advanced Options */
     "skipLibCheck": true,                           /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true        /* Disallow inconsistently-cased references to the same file. */
-  }
+  },
+  "exclude": [
+    "node_modules", // It would be by default, however it needs to be included if you add the exclude option
+    "basics/*.ts",
+    "**/*.dev.ts"
+  ]
+  // "include": [
+  //   "app.ts" // If you add the include option, you need to add all files you want to include in the compile
+  // ]
 }
