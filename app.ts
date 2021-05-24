@@ -1,19 +1,16 @@
-// Type Inference doesn't work for Tuples
-const person2: {
-  name: string;
-  age: number;
-  hobbies: string[];
-  role: [number, string]
-} = {
+enum Role {
+  ADMIN = 10,
+  READ_ONLY = 20,
+  AUTHOR = 30
+}
+
+const person = {
   name: 'Ivan',
   age: 30,
   hobbies: ['Sports', 'Cooking'],
-  role: [2, 'author']
+  role: Role.AUTHOR
 };
 
-let favoriteActivities: string[];
-favoriteActivities = ['Sports', 'Cooking'];
-
-for (const hobby of person2.hobbies) {
-  console.log(hobby.toUpperCase());
+if (person.role === Role.AUTHOR) {
+  console.log('Author');
 }

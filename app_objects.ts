@@ -3,12 +3,12 @@
 //   name: string;
 //   age: number;
 // } = {
-const person = {
+const person_obj = {
   name: 'Ivan',
   age: 30
 };
 
-console.log(person.name);
+console.log(person_obj.name);
 
 // Using Type Assignment
 // const product: {
