@@ -1,7 +1,14 @@
-const person2 = {
+// Type Inference doesn't work for Tuples
+const person2: {
+  name: string;
+  age: number;
+  hobbies: string[];
+  role: [number, string]
+} = {
   name: 'Ivan',
   age: 30,
-  hobbies: ['Sports', 'Cooking']
+  hobbies: ['Sports', 'Cooking'],
+  role: [2, 'author']
 };
 
 let favoriteActivities: string[];
