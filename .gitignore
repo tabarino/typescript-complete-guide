@@ -6,5 +6,8 @@
 # js files
 *.js
 
+# map files
+*.js.map
+
 # misc
 .DS_Store
