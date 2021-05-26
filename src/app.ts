@@ -12,19 +12,30 @@ if (button) {
 // console.log(add(2));
 
 const hobbies = ['Sports', 'Cooking'];
-const activeHobbies = ['Hiking', ...hobbies];
+const activeHobbies = [...hobbies, 'Hiking', 'Fishing'];
 // activeHobbies.push(...hobbies);
 
 console.log(activeHobbies);
 
+const [hobbie1, hobbie2] = hobbies;
+console.log(hobbie1);
+console.log(hobbie2);
+
+const [activeHobbie1, activeHobbie2, ...remainingHobbies] = activeHobbies;
+console.log(remainingHobbies);
+
 const person = {
-  name: 'Ivan',
+  firstName: 'Ivan',
   age: 39
 };
 
 const copiedPerson = { ...person };
 
 console.log(copiedPerson);
+
+const { age, firstName: userName } = person;
+console.log(userName);
+console.log(age);
 
 // const add = (...numbers: [number, number, number]) => {
 const add = (...numbers: number[]) => {
