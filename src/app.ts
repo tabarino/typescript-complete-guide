@@ -2,7 +2,7 @@ class Department {
   // By default we have public on properties and methods
   private employess: string[] = [];
 
-  constructor(private id: string, private name: string) { }
+  constructor(private readonly id: string, public name: string) { }
 
   public describe(this: Department) {
     console.log(`Department:  ${this.id} - ${this.name}`);
