@@ -1,14 +1,11 @@
 class Department {
   // By default we have public on properties and methods
-  private name: string;
   private employess: string[] = [];
 
-  constructor(name: string) {
-    this.name = name;
-  }
+  constructor(private id: string, private name: string) { }
 
   public describe(this: Department) {
-    console.log('Department: ' + this.name);
+    console.log(`Department:  ${this.id} - ${this.name}`);
   }
 
   addEmployee(employee: string) {
@@ -21,7 +18,7 @@ class Department {
   }
 }
 
-const accounting = new Department('Accounting');
+const accounting = new Department('1', 'Accounting');
 
 accounting.addEmployee('Ivan');
 accounting.addEmployee('Rosana');
