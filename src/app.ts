@@ -1,3 +1,11 @@
+class Util {
+  static fiscalYear = 2021;
+
+  static addEquipment(name: string) {
+    return { name };
+  }
+}
+
 class Department {
   // By default we have public on properties and methods
   protected employess: string[] = [];
@@ -39,7 +47,7 @@ class AccountingDepartment extends Department {
     if (this._lastReport) {
       return this._lastReport;
     }
-    
+
     throw new Error('No Report Found');
   }
 
@@ -81,6 +89,10 @@ const itDepartment = new ITDepartment('2', ['Ivan']);
 itDepartment.addEmployee('Matheus');
 itDepartment.describe();
 itDepartment.printEmployeeInformation();
+
+const equipment1 = Util.addEquipment('Computer');
+console.log(equipment1);
+console.log(Util.fiscalYear);
 
 // const accountingCopy = { name: accounting.name, describe: accounting.describe };
 // accountingCopy.describe();
