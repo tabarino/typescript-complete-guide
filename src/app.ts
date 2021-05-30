@@ -1,6 +1,6 @@
 class Department {
   // By default we have public on properties and methods
-  private employess: string[] = [];
+  protected employess: string[] = [];
 
   constructor(private readonly id: string, public name: string) { }
 
@@ -21,6 +21,14 @@ class Department {
 class ITDepartment extends Department {
   constructor(id: string, public admins: string[]) {
     super(id, 'IT');
+  }
+
+  addEmployee(employee: string) {
+    if (employee === 'Ivan') {
+      return;
+    }
+
+    this.employess.push(employee);
   }
 }
 
