@@ -33,12 +33,32 @@ class ITDepartment extends Department {
 }
 
 class AccountingDepartment extends Department {
+  private _lastReport: string;
+
+  public get lastReport(): string {
+    if (this._lastReport) {
+      return this._lastReport;
+    }
+    
+    throw new Error('No Report Found');
+  }
+
+  public set lastReport(value: string) {
+    if (!value) {
+      throw new Error('Please pass in a valid value');
+    }
+    this.addReport(value);
+    // this._lastReport = value;
+  }
+
   constructor(id: string, private reports: string[]) {
     super(id, 'Accounting');
+    this._lastReport = reports[0];
   }
 
   addReport(text: string) {
     this.reports.push(text);
+    this._lastReport = text;
   }
 
   printReport() {
@@ -53,6 +73,9 @@ accounting.addReport('Something went wrong...');
 accounting.describe();
 accounting.printEmployeeInformation();
 accounting.printReport();
+console.log(accounting.lastReport);
+accounting.lastReport = 'Report12';
+console.log(accounting.lastReport);
 
 const itDepartment = new ITDepartment('2', ['Ivan']);
 itDepartment.addEmployee('Matheus');
