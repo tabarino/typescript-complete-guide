@@ -6,15 +6,13 @@ class Util {
   }
 }
 
-class Department {
+abstract class Department {
   // By default we have public on properties and methods
   protected employess: string[] = [];
 
-  constructor(private readonly id: string, public name: string) { }
+  constructor(protected readonly id: string, public name: string) { }
 
-  public describe(this: Department) {
-    console.log(`Department:  ${this.id} - ${this.name}`);
-  }
+  abstract describe(): void;
 
   addEmployee(employee: string) {
     this.employess.push(employee);
@@ -29,6 +27,10 @@ class Department {
 class ITDepartment extends Department {
   constructor(id: string, public admins: string[]) {
     super(id, 'IT');
+  }
+
+  describe() {
+    console.log(`IT Department:  ${this.id} - ${this.name}`);
   }
 
   addEmployee(employee: string) {
@@ -62,6 +64,10 @@ class AccountingDepartment extends Department {
   constructor(id: string, private reports: string[]) {
     super(id, 'Accounting');
     this._lastReport = reports[0];
+  }
+
+  describe() {
+    console.log(`Accounting Department:  ${this.id} - ${this.name}`);
   }
 
   addReport(text: string) {
