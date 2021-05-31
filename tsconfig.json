@@ -78,6 +78,7 @@
     "node_modules", // It would be by default, however it needs to be included if you add the exclude option
     "1_basics/*.ts",
     "2_next_generation_js_ts/*.ts",
+    "3_classes/*.ts",
     "**/*.dev.ts"
   ]
   // "include": [
