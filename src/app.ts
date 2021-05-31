@@ -1,10 +1,10 @@
 interface Greetable {
-  name: string;
+  readonly name: string;
   greet(phrase: string): void;
 }
 
 class Person implements Greetable {
-  name: string;
+  readonly name: string;
   age = 39;
 
   constructor(name: string) {
