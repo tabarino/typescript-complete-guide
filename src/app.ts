@@ -1,3 +1,16 @@
+// type is more commom for Function Types
+// However we can also use an interface in this case
+// type AddFn = (n1: number, n2: number) => number;
+interface AddFn {
+  (n1: number, n2: number): number;
+}
+
+let add: AddFn;
+
+add = (n1: number, n2: number) => {
+  return n1+ n2;
+}
+
 interface Named {
   readonly name: string
 }
