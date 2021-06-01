@@ -80,6 +80,7 @@
     "2_next_generation_js_ts/*.ts",
     "3_classes/*.ts",
     "4_interfaces/*.ts",
+    "5_advanced_types/*.ts",
     "**/*.dev.ts"
   ]
   // "include": [
