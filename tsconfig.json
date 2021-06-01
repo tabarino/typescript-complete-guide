@@ -79,6 +79,7 @@
     "1_basics/*.ts",
     "2_next_generation_js_ts/*.ts",
     "3_classes/*.ts",
+    "4_interfaces/*.ts",
     "**/*.dev.ts"
   ]
   // "include": [
