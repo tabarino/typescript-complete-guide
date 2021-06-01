@@ -1,24 +1,11 @@
-const fetchedUserData = {
-  id: 'u1',
-  name: 'Ivan',
-  job: {
-    title: 'Developer',
-    company: 'ProvidentCRM'
-  }
-};
+const names: Array<string> = [];
 
-// We would in this way in Javascript
-// console.log(fetchedUserData.job && fetchedUserData.job.title);
+const promise: Promise<string> = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('This is done!');
+  }, 1000);
+});
 
-// This is on Typescript (Optional Chaining)
-console.log(fetchedUserData?.job?.title);
-
-
-// Nullish Coalescing
-const userInput = null;
-
-// We would in this way in Javascript
-// const storedData = userInput || 'Default';
-
-// This is on Typescript (Nullish Coalescing) - It only checks if it is null or undefined
-const storedData = userInput ?? 'Default';
+promise.then(data => {
+  data.split(' ');
+});
