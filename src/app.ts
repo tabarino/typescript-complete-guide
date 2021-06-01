@@ -1,15 +1,14 @@
-type Combinable = string | number;
-
-function add(a: number, b: number): number;
-function add(a: string, b: string): string;
-function add(a: string, b: number): string;
-function add(a: number, b: string): string;
-function add(a: Combinable, b: Combinable) {
-  if (typeof a === 'string' || typeof b === 'string') {
-    return a.toString() + b.toString();
+const fetchedUserData = {
+  id: 'u1',
+  name: 'Ivan',
+  job: {
+    title: 'Developer',
+    company: 'ProvidentCRM'
   }
-  return a + b;
-}
+};
 
-const result = add('Ivan', ' Tabarino');
-console.log(result.split(' '));
+// We would in this way in Javascript
+// console.log(fetchedUserData.job && fetchedUserData.job.title);
+
+// This is on Typescript (Optional Chaining)
+console.log(fetchedUserData?.job?.title);
