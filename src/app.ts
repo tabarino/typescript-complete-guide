@@ -1,84 +1,16 @@
-const names: Array<string> = [];
-
-// const promise: Promise<string> = new Promise((resolve, reject) => {
-const promise: Promise<string> = new Promise((resolve) => {
-  setTimeout(() => {
-    resolve('This is done!');
-  }, 1000);
-});
-
-promise.then(data => {
-  data.split(' ');
-});
-
-function merge<T extends object, U extends object>(objA: T, objB: U) {
-  return Object.assign(objA, objB);
+function Logger(constructor: Function) {
+  console.log('Logging...');
+  console.log(constructor);
 }
 
-const mergedObj = merge({ name: 'Ivan' }, { age: 30 });
-console.log(mergedObj.name);
+@Logger
+class Person {
+  name = 'Ivan';
 
-interface Lengthy {
-  length: number;
-}
-
-function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
-  let description = 'Got no elements.';
-  if (element.length > 0) {
-    description = `Got ${element.length} elements.`;
-  }
-  return [element, description];
-}
-
-console.log(countAndDescribe(['Sports', 'Cooking']));
-
-function extractAndConvert<T extends object, U extends keyof T>(obj: T, key: U) {
-  return `Value: ${obj[key]}`;
-}
-
-console.log(extractAndConvert({ name: 'Ivan' }, 'name'));
-
-class DataStorage<T extends string | number | boolean> {
-  private data: T[] = [];
-
-  getItems() {
-    return [...this.data];
-  }
-
-  addItem(item: T) {
-    this.data.push(item);
-  }
-
-  removeItem(item: T) {
-    this.data.splice(this.data.indexOf(item), 1);
+  constructor() {
+    console.log('Creating person object...');
   }
 }
 
-const textStorage = new DataStorage<string>();
-textStorage.addItem('Ivan');
-textStorage.addItem('Rosana');
-textStorage.addItem('Matheus');
-textStorage.removeItem('Matheus');
-console.log(textStorage.getItems());
-
-interface CourseGoal {
-  title: string;
-  description: string;
-  completeUntil: Date;
-}
-
-function createGoalCourse(title: string, description: string, date: Date): CourseGoal {
-  let courseGoal: Partial<CourseGoal> = {};
-  courseGoal.title = title;
-  courseGoal.description = description;
-  courseGoal.completeUntil = date;
-  return courseGoal as CourseGoal;
-}
-
-
-const readOnlyNames: Readonly<string[]> = ['Ivan', 'Rosana'];
-// Using Readonly, we are not able to push or pop from this array
-// readOnlyNames.push('Matheus');
-// readOnlyNames.pop();
-
-
+const person = new Person();
+console.log(person);
