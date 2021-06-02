@@ -60,3 +60,25 @@ textStorage.addItem('Rosana');
 textStorage.addItem('Matheus');
 textStorage.removeItem('Matheus');
 console.log(textStorage.getItems());
+
+interface CourseGoal {
+  title: string;
+  description: string;
+  completeUntil: Date;
+}
+
+function createGoalCourse(title: string, description: string, date: Date): CourseGoal {
+  let courseGoal: Partial<CourseGoal> = {};
+  courseGoal.title = title;
+  courseGoal.description = description;
+  courseGoal.completeUntil = date;
+  return courseGoal as CourseGoal;
+}
+
+
+const readOnlyNames: Readonly<string[]> = ['Ivan', 'Rosana'];
+// Using Readonly, we are not able to push or pop from this array
+// readOnlyNames.push('Matheus');
+// readOnlyNames.pop();
+
+
