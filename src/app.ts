@@ -37,3 +37,26 @@ function extractAndConvert<T extends object, U extends keyof T>(obj: T, key: U) 
 }
 
 console.log(extractAndConvert({ name: 'Ivan' }, 'name'));
+
+class DataStorage<T extends string | number | boolean> {
+  private data: T[] = [];
+
+  getItems() {
+    return [...this.data];
+  }
+
+  addItem(item: T) {
+    this.data.push(item);
+  }
+
+  removeItem(item: T) {
+    this.data.splice(this.data.indexOf(item), 1);
+  }
+}
+
+const textStorage = new DataStorage<string>();
+textStorage.addItem('Ivan');
+textStorage.addItem('Rosana');
+textStorage.addItem('Matheus');
+textStorage.removeItem('Matheus');
+console.log(textStorage.getItems());
