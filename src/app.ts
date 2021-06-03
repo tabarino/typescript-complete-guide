@@ -1,6 +1,6 @@
 function Logger(logString: string) {
   console.log('Logger Factory');
-  return function(constructor: Function) {
+  return function (constructor: Function) {
     console.log(logString);
     console.log(constructor);
   }
@@ -10,7 +10,7 @@ function WithTemplate(template: string, hookId: string) {
   console.log('Template Factory');
   // With "_" we tell typescript that we know there is an argument there, but we won't use it
   // return function(_: Function) {
-  return function(constructor: any) {
+  return function (constructor: any) {
     console.log('Rendering Template...');
     const hookEl = document.getElementById(hookId);
     const p = new constructor();
@@ -42,14 +42,32 @@ function Log(target: any, propertyName: string) {
   console.log(target, propertyName);
 }
 
+function Log2(target: any, name: string | Symbol, descriptor: PropertyDescriptor) {
+  console.log('Accessor Decorator');
+  console.log(target, name, descriptor);
+}
+
+function Log3(target: any, name: string | Symbol, descriptor: PropertyDescriptor) {
+  console.log('Method Decorator');
+  console.log(target, name, descriptor);
+}
+
+function Log4(target: any, name: string | Symbol, position: number) {
+  console.log('Parameter Decorator');
+  console.log(target, name, position);
+}
+
 class Product {
   @Log
   title: string;
-  
+
   private _price: number;
+  
   public get price(): number {
     return this._price;
   }
+
+  @Log2
   public set price(value: number) {
     if (value <= 0) {
       throw new Error('Invalid Price - It should be positive!');
@@ -62,7 +80,8 @@ class Product {
     this._price = price;
   }
 
-  getPriceWithTax(tax: number) {
+  @Log3
+  getPriceWithTax(@Log4 tax: number) {
     return this._price * (1 + tax);
   }
 }
