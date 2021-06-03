@@ -10,14 +10,17 @@ function WithTemplate(template: string, hookId: string) {
   console.log('Template Factory');
   // With "_" we tell typescript that we know there is an argument there, but we won't use it
   // return function(_: Function) {
-  return function (constructor: any) {
-    console.log('Rendering Template...');
-    const hookEl = document.getElementById(hookId);
-    const p = new constructor();
-
-    if (hookEl) {
-      hookEl.innerHTML = template;
-      hookEl.querySelector('h1')!.textContent = p.name;
+  return function <T extends { new(...args: any[]): { name: string } }>(originalConstructor: T) {
+    return class extends originalConstructor {
+      constructor(..._: any[]) {
+        super();
+        console.log('Rendering Template...');
+        const hookEl = document.getElementById(hookId);
+        if (hookEl) {
+          hookEl.innerHTML = template;
+          hookEl.querySelector('h1')!.textContent = this.name;
+        }
+      }
     }
   }
 }
@@ -62,7 +65,7 @@ class Product {
   title: string;
 
   private _price: number;
-  
+
   public get price(): number {
     return this._price;
   }
