@@ -34,3 +34,35 @@ class Person {
 
 const person = new Person();
 console.log(person);
+
+
+
+function Log(target: any, propertyName: string) {
+  console.log('Property Decorator');
+  console.log(target, propertyName);
+}
+
+class Product {
+  @Log
+  title: string;
+  
+  private _price: number;
+  public get price(): number {
+    return this._price;
+  }
+  public set price(value: number) {
+    if (value <= 0) {
+      throw new Error('Invalid Price - It should be positive!');
+    }
+    this._price = value;
+  }
+
+  constructor(title: string, price: number) {
+    this.title = title;
+    this._price = price;
+  }
+
+  getPriceWithTax(tax: number) {
+    return this._price * (1 + tax);
+  }
+}
