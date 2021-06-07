@@ -8,6 +8,7 @@
 
 # js files
 *.js
+!webpack.config.js
 
 # map files
 *.js.map
